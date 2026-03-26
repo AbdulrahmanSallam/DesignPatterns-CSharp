@@ -1,6 +1,7 @@
 ﻿using DesignPatterns_CSharp.Behavioral.Iterator;
 using DesignPatterns_CSharp.Behavioral.Memento;
 using DesignPatterns_CSharp.Behavioral.State;
+using DesignPatterns_CSharp.Behavioral.Strategy;
 
 
 // Behavioral
@@ -43,18 +44,28 @@ using DesignPatterns_CSharp.Behavioral.State;
 
 #region Iterator
 
-var history = new BrowseHistory();
+//var history = new BrowseHistory();
 
-history.Push("first");
-history.Push("second");
+//history.Push("first");
+//history.Push("second");
 
-var iterator = history.CreateIterator();
+//var iterator = history.CreateIterator();
 
-while (iterator.HasNext())
-{
-    Console.WriteLine(iterator.Current());
-    iterator.Next();
-}
+//while (iterator.HasNext())
+//{
+//    Console.WriteLine(iterator.Current());
+//    iterator.Next();
+//}
 
+
+#endregion
+
+
+
+#region Strategy
+
+ImageStore.Store("image", new PngCompressor(), new BlackAndWhiteFilter());
+
+ImageStore.Store("image", new JpegCompressor(), new BlackAndWhiteFilter());
 
 #endregion
