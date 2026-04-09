@@ -1,7 +1,4 @@
-﻿using DesignPatterns_CSharp.Behavioral.Iterator;
-using DesignPatterns_CSharp.Behavioral.Memento;
-using DesignPatterns_CSharp.Behavioral.State;
-using DesignPatterns_CSharp.Behavioral.Strategy;
+﻿using DesignPatterns_CSharp.Behavioral.TemplateMethod;
 
 
 // Behavioral
@@ -61,11 +58,24 @@ using DesignPatterns_CSharp.Behavioral.Strategy;
 #endregion
 
 
-
 #region Strategy
 
-ImageStore.Store("image", new PngCompressor(), new BlackAndWhiteFilter());
+//ImageStore.Store("image", new PngCompressor(), new BlackAndWhiteFilter());
 
-ImageStore.Store("image", new JpegCompressor(), new BlackAndWhiteFilter());
+//ImageStore.Store("image", new JpegCompressor(), new BlackAndWhiteFilter());
+
+#endregion
+
+
+
+#region Template Method
+
+var transferMoney1 = new TransferMoneyTask();
+transferMoney1.Execute();
+
+var generateReport1 = new GenerateReportTask();
+generateReport1.Execute();
+
+
 
 #endregion
