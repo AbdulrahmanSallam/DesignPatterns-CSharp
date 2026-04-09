@@ -1,4 +1,7 @@
-﻿using DesignPatterns_CSharp.Behavioral.TemplateMethod;
+﻿using DesignPatterns_CSharp.Behavioral.Command;
+using DesignPatterns_CSharp.Behavioral.Command.Editor;
+using DesignPatterns_CSharp.Behavioral.Command.Fx;
+using DesignPatterns_CSharp.Behavioral.TemplateMethod;
 
 
 // Behavioral
@@ -70,12 +73,51 @@
 
 #region Template Method
 
-var transferMoney1 = new TransferMoneyTask();
-transferMoney1.Execute();
+//var transferMoney1 = new TransferMoneyTask();
+//transferMoney1.Execute();
 
-var generateReport1 = new GenerateReportTask();
-generateReport1.Execute();
+//var generateReport1 = new GenerateReportTask();
+//generateReport1.Execute();
 
+
+
+#endregion
+
+
+#region Command
+
+//var customerService = new CustomerService();
+
+//var addCustomerCommand = new AddCustomerCommand(customerService);
+
+//var button = new Button(addCustomerCommand);
+
+
+// composite commands
+
+//var compositeCommands = new CompositeCommand();
+
+//compositeCommands.Add(new ResizeCommand());
+//compositeCommands.Add(new BlackAndWhiteCommand());
+
+//compositeCommands.Execute();
+
+// Undoable
+
+var history = new History();
+var document = new HtmlDocument();
+document.Content = "hellllo";
+
+var boldCommand = new BoldCommand(document,history);
+
+boldCommand.Execute();
+Console.WriteLine(document.Content);
+
+var undoCommand = new UndoCommand(history);
+
+undoCommand.Execute();
+
+Console.WriteLine(document.Content);
 
 
 #endregion
