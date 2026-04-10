@@ -1,6 +1,7 @@
 ﻿using DesignPatterns_CSharp.Behavioral.Command;
 using DesignPatterns_CSharp.Behavioral.Command.Editor;
 using DesignPatterns_CSharp.Behavioral.Command.Fx;
+using DesignPatterns_CSharp.Behavioral.Observer;
 using DesignPatterns_CSharp.Behavioral.TemplateMethod;
 
 
@@ -104,20 +105,56 @@ using DesignPatterns_CSharp.Behavioral.TemplateMethod;
 
 // Undoable
 
-var history = new History();
-var document = new HtmlDocument();
-document.Content = "hellllo";
+//var history = new History();
+//var document = new HtmlDocument();
+//document.Content = "hellllo";
 
-var boldCommand = new BoldCommand(document,history);
+//var boldCommand = new BoldCommand(document,history);
 
-boldCommand.Execute();
-Console.WriteLine(document.Content);
+//boldCommand.Execute();
+//Console.WriteLine(document.Content);
 
-var undoCommand = new UndoCommand(history);
+//var undoCommand = new UndoCommand(history);
 
-undoCommand.Execute();
+//undoCommand.Execute();
 
-Console.WriteLine(document.Content);
+//Console.WriteLine(document.Content);
+
+
+#endregion
+
+
+
+#region Observer
+// push style
+
+//var datasource = new DataSource();
+//var sheet1 = new SpreadSheet();
+//var sheet2 = new SpreadSheet();
+//var chart = new Chart();
+
+//datasource.AddObserver(sheet1);
+//datasource.AddObserver(chart);
+
+//datasource.Value = 10;
+//datasource.AddObserver(sheet2);
+
+//datasource.Value = 20;
+
+// pull style
+
+var datasource = new DataSource();
+var sheet1 = new SpreadSheet(datasource);
+var sheet2 = new SpreadSheet(datasource);
+var chart = new Chart(datasource);
+
+datasource.AddObserver(sheet1);
+datasource.AddObserver(chart);
+
+datasource.Value = 10;
+datasource.AddObserver(sheet2);
+
+datasource.Value = 20;
 
 
 #endregion
