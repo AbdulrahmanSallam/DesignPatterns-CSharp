@@ -1,6 +1,8 @@
 ﻿using DesignPatterns_CSharp.Behavioral.Command;
 using DesignPatterns_CSharp.Behavioral.Command.Editor;
 using DesignPatterns_CSharp.Behavioral.Command.Fx;
+using DesignPatterns_CSharp.Behavioral.Mediator;
+using DesignPatterns_CSharp.Behavioral.Mediator.UsingObserver;
 using DesignPatterns_CSharp.Behavioral.Observer;
 using DesignPatterns_CSharp.Behavioral.TemplateMethod;
 
@@ -143,18 +145,35 @@ using DesignPatterns_CSharp.Behavioral.TemplateMethod;
 
 // pull style
 
-var datasource = new DataSource();
-var sheet1 = new SpreadSheet(datasource);
-var sheet2 = new SpreadSheet(datasource);
-var chart = new Chart(datasource);
+//var datasource = new DataSource();
+//var sheet1 = new SpreadSheet(datasource);
+//var sheet2 = new SpreadSheet(datasource);
+//var chart = new Chart(datasource);
 
-datasource.AddObserver(sheet1);
-datasource.AddObserver(chart);
+//datasource.AddObserver(sheet1);
+//datasource.AddObserver(chart);
 
-datasource.Value = 10;
-datasource.AddObserver(sheet2);
+//datasource.Value = 10;
+//datasource.AddObserver(sheet2);
 
-datasource.Value = 20;
+//datasource.Value = 20;
+
+
+#endregion
+
+
+#region Mediator
+
+//var articleDialogBox = new ArticlesDialogBox();
+
+//articleDialogBox.SimulateChanges();
+
+
+// using observer 
+
+var LevelsDialogBox = new LevelsDialogBox();
+
+LevelsDialogBox.SimulateChanges();
 
 
 #endregion

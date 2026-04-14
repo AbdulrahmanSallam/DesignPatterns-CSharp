@@ -11,6 +11,15 @@
             levelsListBox.Attach(new ListBoxObserver(this));
             titleTextBox.Attach(new TitleTextBoxObserver(this));
         }
+        public void SimulateChanges()
+        {
+            levelsListBox.Selection = "hello";
+            //titleTextBox.Content = "";
+            Console.WriteLine($"title = {titleTextBox.Content}");
+            Console.WriteLine($"button = {saveButton.IsEnabled}");
+        }
+
+
         private void TitleChanged()
         {
             var isEmpty = String.IsNullOrWhiteSpace(titleTextBox.Content);
