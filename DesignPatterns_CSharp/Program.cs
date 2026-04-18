@@ -1,4 +1,5 @@
-﻿using DesignPatterns_CSharp.Behavioral.Command;
+﻿using DesignPatterns_CSharp.Behavioral.ChainOfResponsibility;
+using DesignPatterns_CSharp.Behavioral.Command;
 using DesignPatterns_CSharp.Behavioral.Command.Editor;
 using DesignPatterns_CSharp.Behavioral.Command.Fx;
 using DesignPatterns_CSharp.Behavioral.Mediator;
@@ -171,9 +172,23 @@ using DesignPatterns_CSharp.Behavioral.TemplateMethod;
 
 // using observer 
 
-var LevelsDialogBox = new LevelsDialogBox();
+//var LevelsDialogBox = new LevelsDialogBox();
 
-LevelsDialogBox.SimulateChanges();
+//LevelsDialogBox.SimulateChanges();
+
+
+#endregion
+
+
+#region
+
+var compressor = new Compressor(null);
+var logger = new Logger(compressor);
+var authenticator= new Authenticator(logger);
+
+var webserver = new WebServer(authenticator);
+webserver.Handle(new HttpRequest() { UserName = "admin", Password = "1234" });
+
 
 
 #endregion
