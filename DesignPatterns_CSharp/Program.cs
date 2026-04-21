@@ -6,6 +6,8 @@ using DesignPatterns_CSharp.Behavioral.Mediator;
 using DesignPatterns_CSharp.Behavioral.Mediator.UsingObserver;
 using DesignPatterns_CSharp.Behavioral.Observer;
 using DesignPatterns_CSharp.Behavioral.TemplateMethod;
+using DesignPatterns_CSharp.Behavioral.Visitor;
+using Visitor = DesignPatterns_CSharp.Behavioral.Visitor;
 
 
 // Behavioral
@@ -180,15 +182,26 @@ using DesignPatterns_CSharp.Behavioral.TemplateMethod;
 #endregion
 
 
-#region
+#region Chain Of Responsibility
 
-var compressor = new Compressor(null);
-var logger = new Logger(compressor);
-var authenticator= new Authenticator(logger);
+//var compressor = new Compressor(null);
+//var logger = new Logger(compressor);
+//var authenticator= new Authenticator(logger);
 
-var webserver = new WebServer(authenticator);
-webserver.Handle(new HttpRequest() { UserName = "admin", Password = "1234" });
-
-
+//var webserver = new WebServer(authenticator);
+//webserver.Handle(new HttpRequest() { UserName = "admin", Password = "1234" });
 
 #endregion
+
+
+#region Visitor
+
+var htmlDocument = new Visitor.HtmlDocument();
+
+htmlDocument.Add(new AnchorNode());
+htmlDocument.Add(new HeadingNode());
+
+htmlDocument.Execute(new HighlightOperation());
+htmlDocument.Execute(new PlainTextOperation());
+
+#endregion 
