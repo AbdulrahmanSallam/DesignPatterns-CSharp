@@ -9,6 +9,7 @@ using DesignPatterns_CSharp.Behavioral.TemplateMethod;
 using DesignPatterns_CSharp.Behavioral.Visitor;
 using DesignPatterns_CSharp.Structural.Adapter.AvaFilters;
 using DesignPatterns_CSharp.Structural.Adapter.Problem;
+using DesignPatterns_CSharp.Structural.Adapter.Solution;
 using DesignPatterns_CSharp.Structural.Composite.Problem;
 using DesignPatterns_CSharp.Structural.Composite.Solution;
 using Visitor = DesignPatterns_CSharp.Behavioral.Visitor;
@@ -242,10 +243,18 @@ using Visitor = DesignPatterns_CSharp.Behavioral.Visitor;
 
 #region Adapter
 
-var imageView = new ImageViewP(new ImageP());
-
-imageView.Apply(new VividFilterP());
-
+// problem
+//var imageView = new ImageViewP(new ImageP());
+//imageView.Apply(new VividFilterP());
 //imageView.Apply(new AvaCaremel()); AvaCaremel doesn't match what we want 
+
+// solution
+var imageView = new ImageView(new Image());
+
+imageView.Apply(new AvaCarmelFilter()); // now works
+
+
+
+
 
 #endregion
