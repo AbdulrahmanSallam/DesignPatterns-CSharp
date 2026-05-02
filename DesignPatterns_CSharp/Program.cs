@@ -7,10 +7,13 @@ using DesignPatterns_CSharp.Behavioral.Mediator.UsingObserver;
 using DesignPatterns_CSharp.Behavioral.Observer;
 using DesignPatterns_CSharp.Behavioral.TemplateMethod;
 using DesignPatterns_CSharp.Behavioral.Visitor;
+using DesignPatterns_CSharp.Structural.Composite.Problem;
 using Visitor = DesignPatterns_CSharp.Behavioral.Visitor;
 
 
 // Behavioral
+
+#region Behavioral Patterns
 
 #region Memento
 
@@ -74,7 +77,6 @@ using Visitor = DesignPatterns_CSharp.Behavioral.Visitor;
 //ImageStore.Store("image", new JpegCompressor(), new BlackAndWhiteFilter());
 
 #endregion
-
 
 
 #region Template Method
@@ -196,12 +198,34 @@ using Visitor = DesignPatterns_CSharp.Behavioral.Visitor;
 
 #region Visitor
 
-var htmlDocument = new Visitor.HtmlDocument();
+//var htmlDocument = new Visitor.HtmlDocument();
 
-htmlDocument.Add(new AnchorNode());
-htmlDocument.Add(new HeadingNode());
+//htmlDocument.Add(new AnchorNode());
+//htmlDocument.Add(new HeadingNode());
 
-htmlDocument.Execute(new HighlightOperation());
-htmlDocument.Execute(new PlainTextOperation());
+//htmlDocument.Execute(new HighlightOperation());
+//htmlDocument.Execute(new PlainTextOperation());
 
 #endregion 
+
+#endregion
+
+
+#region Structural
+
+
+#region
+
+var group = new GroupP();
+
+group.Add(new ShapeP());
+group.Add(new ShapeP());
+
+group.Add(new GroupP());
+group.Add(new GroupP());
+
+
+#endregion
+
+
+#endregion
