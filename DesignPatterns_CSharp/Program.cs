@@ -8,6 +8,7 @@ using DesignPatterns_CSharp.Behavioral.Observer;
 using DesignPatterns_CSharp.Behavioral.TemplateMethod;
 using DesignPatterns_CSharp.Behavioral.Visitor;
 using DesignPatterns_CSharp.Structural.Composite.Problem;
+using DesignPatterns_CSharp.Structural.Composite.Solution;
 using Visitor = DesignPatterns_CSharp.Behavioral.Visitor;
 
 
@@ -214,16 +215,23 @@ using Visitor = DesignPatterns_CSharp.Behavioral.Visitor;
 #region Structural
 
 
-#region
+#region Composite
 
-var group = new GroupP();
+var group1 = new Group();
+group1.Add(new Shape());
+group1.Add(new Shape());
 
-group.Add(new ShapeP());
-group.Add(new ShapeP());
+var group2 = new Group();
+group2.Add(new Shape());
+group2.Add(new Shape());
 
-group.Add(new GroupP());
-group.Add(new GroupP());
+var group = new Group();
+group.Add(group1);
+group.Add(group2);
+group.Add(new Shape());
 
+group.Render();
+group.Move();
 
 #endregion
 
