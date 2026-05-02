@@ -7,6 +7,8 @@ using DesignPatterns_CSharp.Behavioral.Mediator.UsingObserver;
 using DesignPatterns_CSharp.Behavioral.Observer;
 using DesignPatterns_CSharp.Behavioral.TemplateMethod;
 using DesignPatterns_CSharp.Behavioral.Visitor;
+using DesignPatterns_CSharp.Structural.Adapter.AvaFilters;
+using DesignPatterns_CSharp.Structural.Adapter.Problem;
 using DesignPatterns_CSharp.Structural.Composite.Problem;
 using DesignPatterns_CSharp.Structural.Composite.Solution;
 using Visitor = DesignPatterns_CSharp.Behavioral.Visitor;
@@ -217,23 +219,33 @@ using Visitor = DesignPatterns_CSharp.Behavioral.Visitor;
 
 #region Composite
 
-var group1 = new Group();
-group1.Add(new Shape());
-group1.Add(new Shape());
+//var group1 = new Group();
+//group1.Add(new Shape());
+//group1.Add(new Shape());
 
-var group2 = new Group();
-group2.Add(new Shape());
-group2.Add(new Shape());
+//var group2 = new Group();
+//group2.Add(new Shape());
+//group2.Add(new Shape());
 
-var group = new Group();
-group.Add(group1);
-group.Add(group2);
-group.Add(new Shape());
+//var group = new Group();
+//group.Add(group1);
+//group.Add(group2);
+//group.Add(new Shape());
 
-group.Render();
-group.Move();
+//group.Render();
+//group.Move();
 
 #endregion
 
+
+#endregion
+
+#region Adapter
+
+var imageView = new ImageViewP(new ImageP());
+
+imageView.Apply(new VividFilterP());
+
+//imageView.Apply(new AvaCaremel()); AvaCaremel doesn't match what we want 
 
 #endregion
